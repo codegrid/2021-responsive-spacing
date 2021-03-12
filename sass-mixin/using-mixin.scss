@@ -1,0 +1,9 @@
+@import "responsive-spacing";
+
+section + section {
+  @include responsiveSpacing(
+    "margin-top",
+    $bpLower: 360px, $bpUpper: 1024px,
+    $spMin: 52px, $spMax: 136px
+  );
+}

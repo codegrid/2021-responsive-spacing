@@ -1,0 +1,14 @@
+// licensed under CC0 http://creativecommons.org/publicdomain/zero/1.0/deed.ja
+
+// 幅に応じて伸び縮みする空白
+// $property 値を指定するプロパティ
+// $bpLower ブレークポイント（小）
+// $bpUpper ブレークポイント（大）
+// $spMin 値の下限
+// $spMax 値の上限
+@mixin responsiveSpacing($property, $bpLower, $bpUpper, $spMin, $spMax) {
+  $a: round(100 * ($spMax - $spMin) / ($bpUpper - $bpLower));
+  $b: round($spMin - ($bpLower / 100) * $a);
+  #{$property}: $spMin; // clamp()に対応してないブラウザ用
+  #{$property}: clamp(#{$spMin}, calc(#{$a}vw + #{$b}), #{$spMax});
+}
