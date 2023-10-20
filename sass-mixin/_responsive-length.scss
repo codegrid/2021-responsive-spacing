@@ -1,8 +1,14 @@
+// licensed under CC0 http://creativecommons.org/publicdomain/zero/1.0/deed.ja
+
 @use "sass:math";
 
 // 幅に応じて伸び縮みする値を返す
 // 幅が$lower以下では$min、幅が$upper以上では$maxに、
 // その間は幅に応じて伸び縮みする
+// $lower ブレークポイント（小）
+// $upper ブレークポイント（大）
+// $min 値の下限
+// $max 値の上限
 @function responsiveLength($lower, $upper, $min, $max) {
   $a: math.round(math.div(100 * ($max - $min), ($upper - $lower)));
   $b: math.round($min - math.div($lower, 100) * $a);
