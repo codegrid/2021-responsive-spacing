@@ -32,5 +32,31 @@
       <div class="box"></div>
       <div class="box"></div>
     </div>
+
+    <pre></pre>
   </body>
+  <script>
+    const wrapper = document.querySelector(".wrapper");
+    const pre = document.querySelector("pre");
+
+    let width = "unavailable";
+    let gap = "unavailable";
+
+    function update() {
+      width = `${window.innerWidth}px`;
+      gap = getComputedStyle(wrapper).rowGap;
+    }
+
+    function render() {
+      pre.textContent = `width: ${width}, gap: ${gap}`;
+    }
+
+    update();
+    render();
+
+    window.addEventListener("resize", () => {
+      update();
+      render();
+    });
+  </script>
 </html>
